@@ -1,15 +1,21 @@
 <template>
-  <UiContainer class="max-w-[85rem] mx-autoflex flex-col items-center justify-center py-16">
-    <Vue3Marquee
-        :duration="40"
-        pause-on-hover
-    >
-      <template v-for="(item, i) in customers" :key="i">
-        <div class="!border-none m-4">
-          <NuxtImg :src="item.logo" class="w-[150px]"/>
-        </div>
-      </template>
-    </Vue3Marquee>
+  <UiContainer class="max-w-[85rem] mx-auto flex  items-center justify-center py-16 min-h-[200px]">
+    <ClientOnly>
+      <Vue3Marquee
+          :duration="40"
+          pause-on-hover
+          class=""
+      >
+        <template v-for="(item, i) in customers" :key="i">
+          <div class="!border-none m-4 ">
+            <div class="w-[150px]">
+              <NuxtImg :src="item.logo" class="w-[150px]" loading="lazy" :alt="item.title" />
+            </div>
+          </div>
+        </template>
+      </Vue3Marquee>
+    </ClientOnly>
+
 
   </UiContainer>
   <!--

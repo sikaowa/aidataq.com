@@ -1,7 +1,7 @@
 services:
   nuxt-app:
-#    image: nuxt-app
-    build: .
+    image: nuxt
+#    build: .
     container_name: aidataq-web-1.0
     ports:
       - "3000"

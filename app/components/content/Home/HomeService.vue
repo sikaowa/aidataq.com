@@ -2,7 +2,9 @@
   <div class="relative overflow-hidden lg:px-14  lg:block" id="service">
     <!--    <div class="max-w-[85rem] mx-auto ">-->
     <div class=" bg-blue-50 lg:rounded-[50px]">
+
       <UiContainer class="max-w-[85rem] mx-autoflex flex-col items-center justify-center py-16 ">
+
         <p class="text-center text-sm font-semibold text-primary">{{ feature.headline }}</p>
         <h1 class="mt-6 text-pretty text-center text-3xl font-semibold tracking-tight lg:text-4xl text-blue-900">
           {{ feature?.title }}
@@ -10,74 +12,80 @@
         <p class="mx-auto mt-5 max-w-[700px] text-pretty text-center text-lg text-muted-foreground">
           {{ feature?.description }}
         </p>
+        <div class="lg:min-h-[600px]">
+          <ClientOnly>
 
-        <div class=" pt-10 flex flex-col items-center">
-          <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8 justify-center ">
-            <div class="space-y-2 px-6 lg:px-0">
-              <UiCard
-                  @click="handleAccordionTrigger(item, index)"
-                  class="w-full lg:w-[400px] h-[125px] p-0 rounded-2xl bg-blue-50 cursor-pointer  transition-all  box-border "
-                  :class="defaultValue === item.value ? 'border-t-blue-500  border-t-4 shadow-lg bg-white' : 'hover:shadow-xl hover:bg-white/50 hover:border-t-4'"
-                  v-for="(item, index) in accordionItems" :key="index">
-                <UiCardHeader class="font-bold text-blue-900 px-4 ">
-                  {{item.title}}
-                </UiCardHeader>
-                <UiCardContent class="text-sm text-muted-foreground">
-                  {{ item.content }}
-                </UiCardContent>
-              </UiCard>
-            </div>
-            <UiCard class=" lg:w-full h-[520px] "
-                    :class="isLargeScreen ? 'w-full h-[520px]' : 'w-[22rem] h-max-[520px]'"
-            >
-              <swiper
-                  :direction="isLargeScreen ? 'vertical' : 'horizontal'"
-                  :slidesPerView="1"
-                  :spaceBetween="30"
-                  :mousewheel="true"
-                  :pagination="{
+            <div class=" pt-10 flex flex-col items-center">
+              <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8 justify-center ">
+                <div class="space-y-2 px-6 lg:px-0">
+                  <UiCard
+                      @click="handleAccordionTrigger(item, index)"
+                      class="w-full lg:w-[400px] h-[125px] p-0 rounded-2xl bg-blue-50 cursor-pointer  transition-all  box-border "
+                      :class="defaultValue === item.value ? 'border-t-blue-500  border-t-4 shadow-lg bg-white' : 'hover:shadow-xl hover:bg-white/50 hover:border-t-4'"
+                      v-for="(item, index) in accordionItems" :key="index">
+                    <UiCardHeader class="font-bold text-blue-900 px-4 ">
+                      {{item.title}}
+                    </UiCardHeader>
+                    <UiCardContent class="text-sm text-muted-foreground">
+                      {{ item.content }}
+                    </UiCardContent>
+                  </UiCard>
+                </div>
+                <UiCard class=" lg:w-auto h-[520px] "
+                        :class="isLargeScreen ? 'w-auto h-[520px]' : 'w-[22rem] h-max-[520px]'"
+                >
+                  <swiper
+                      :direction="isLargeScreen ? 'vertical' : 'horizontal'"
+                      :slidesPerView="1"
+                      :spaceBetween="30"
+                      :mousewheel="true"
+                      :pagination="{
       clickable: true,
     }"
-                  :modules="[Mousewheel, Pagination]"
-                  @swiper="onSwiper"
-                  class="mySwiper rounded-md "
-                  :class="isLargeScreen && '!h-full'"
-              >
-                <swiper-slide>
-                  <NuxtImg src="/service/p1.png"
-                           class="w-full h-full"
-                           sizes="100vw sm:50vw"
-                           alt="你并不笨，你只是需要更清晰！"/>
-                </swiper-slide>
-                <swiper-slide>
-                  <NuxtImg src="/service/p2.png"
-                           alt="你的专属工作空间，Figma定制"
-                           class="w-full h-full"
-                           sizes="100vw sm:50vw"
+                      :modules="[Mousewheel, Pagination]"
+                      @swiper="onSwiper"
+                      class="mySwiper rounded-md "
+                      :class="isLargeScreen && '!h-full'"
+                  >
+                    <swiper-slide>
+                      <NuxtImg src="/service/p1.png"
+                               class="w-full h-full"
+                               sizes="100vw sm:50vw"
+                               alt="你并不笨，你只是需要更清晰！"/>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <NuxtImg src="/service/p2.png"
+                               alt="你的专属工作空间，Figma定制"
+                               class="w-full h-full"
+                               sizes="100vw sm:50vw"
 
-                  ></NuxtImg>
+                      ></NuxtImg>
 
-                </swiper-slide>
-                <swiper-slide>
-                  <NuxtImg src="/service/p3.png"
-                           class="w-full h-full"
-                           sizes="100vw sm:50vw"
+                    </swiper-slide>
+                    <swiper-slide>
+                      <NuxtImg src="/service/p3.png"
+                               class="w-full h-full"
+                               sizes="100vw sm:50vw"
 
-                           alt="图文+视觉的讲解"></NuxtImg>
+                               alt="图文+视觉的讲解"></NuxtImg>
 
-                </swiper-slide>
-                <swiper-slide>
-                  <NuxtImg src="/service/p4.png"
-                           sizes="100vw sm:50vw"
-                           class="w-full h-full" alt="图文+视觉的讲解"
+                    </swiper-slide>
+                    <swiper-slide>
+                      <NuxtImg src="/service/p4.png"
+                               sizes="100vw sm:50vw"
+                               class="w-full h-full" alt="图文+视觉的讲解"
 
-                  ></NuxtImg>
-                </swiper-slide>
-              </swiper>
+                      ></NuxtImg>
+                    </swiper-slide>
+                  </swiper>
 
-            </UiCard>
-          </div>
+                </UiCard>
+              </div>
+            </div>
+          </ClientOnly>
+
         </div>
+
       </UiContainer>
 
     </div>
