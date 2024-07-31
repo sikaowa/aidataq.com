@@ -4,7 +4,29 @@ services:
     build: .
     container_name: nuxt-app
     ports:
-      - "3030:3000"
+      - "3000"
     command: node .output/server/index.mjs
-    environment:
-      - SITE_URL=http://localhost:3030
+#    environment:
+#      - SITE_URL=http://localhost:3030
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+
+      - "traefik.http.middlewares.gzip.compress=true"
+#      - "traefik.http.middlewares.redir-https.redirectscheme.scheme=https"
+#      - "traefik.http.middlewares.redir-https.redirectscheme.permanent=false"
+
+      - "traefik.http.routers.aidataq-web.middlewares=redir-https@docker"
+      - "traefik.http.routers.aidataq-web-secure.middlewares=gzip@docker"
+
+      - "traefik.http.routers.aidataq-web.entrypoints=http"
+      - "traefik.http.routers.aidataq-web.rule=Host(`aidataq.picker.cc`)"
+      - "traefik.http.routers.aidataq-web.service=noop@internal"
+
+      - "traefik.http.routers.aidataq-web-secure.entrypoints=https"
+      - "traefik.http.routers.aidataq-web-secure.tls=true"
+      - "traefik.http.routers.aidataq-web-secure.rule=Host(`aidataq.picker.cc``)"
+#      - "traefik.http.routers.aidataq-web-secure.service=dashboard@internal"
+      - "traefik.http.services.aidataq-web.loadbalancer.server.scheme=http"
+      - "traefik.http.services.aidataq-web.loadbalancer.server.port=3000"
+
