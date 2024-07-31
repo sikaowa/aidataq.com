@@ -1,8 +1,8 @@
 services:
   nuxt-app:
-    image: nuxt-app
+#    image: nuxt-app
     build: .
-    container_name: nuxt-app
+    container_name: aidataq-web-1.0
     ports:
       - "3000"
     command: node .output/server/index.mjs
